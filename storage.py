@@ -20,7 +20,7 @@ def add_product():
     product_price = input("Cena produktu:")
     product2 = {
         'name': product_name,
-        'price': product_price
+        'price': int(product_price)
     }
 
     products.append(product2)
@@ -39,13 +39,20 @@ def find_product():
         print("Produkt nenalezen")
 
 
+def total_price():
+    price = 0
+    for product in products:
+        price += product ['price']
+    return price
+
 
 def menu():
     print("Vítej ve skladu")
     print("###############\n")
     print("1. Výpis položek")
     print("2. Přidání položky")
-    print("3. Vyhledat produkt(y)\n")
+    print("3. Vyhledat produkt(y)")
+    print("4. Cena všech produktů\n")
 
     choice = int(input("Volba: "))
 
@@ -68,6 +75,11 @@ def menu():
         print("")
         menu()
 
+    elif choice == 4:
+        print("Celková cena všech produktů:")
+        print(total_price())
+        print("")
+        menu()
 
     else:
         print("Zadal jsi špatně!\n")
