@@ -46,13 +46,23 @@ def total_price():
     return price
 
 
+def lowest_price():
+    lowest = products[0]
+    for product in products:
+        if product["price"] < lowest["price"]:
+            lowest = product
+    return lowest
+
+
+
 def menu():
     print("Vítej ve skladu")
     print("###############\n")
     print("1. Výpis položek")
     print("2. Přidání položky")
     print("3. Vyhledat produkt(y)")
-    print("4. Cena všech produktů\n")
+    print("4. Cena všech produktů")
+    print("5. Nejlevnější produkt\n")
 
     choice = int(input("Volba: "))
 
@@ -78,6 +88,12 @@ def menu():
     elif choice == 4:
         print("Celková cena všech produktů:")
         print(total_price())
+        print("")
+        menu()
+
+    elif choice == 5:
+        print("Nejlevnější produkt je:")
+        print(lowest_price())
         print("")
         menu()
 
