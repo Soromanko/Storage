@@ -48,10 +48,27 @@ def total_price():
 
 def lowest_price():
     lowest = products[0]
-    for product in products:
-        if product["price"] < lowest["price"]:
-            lowest = product
-    return lowest
+    lowest_price = lowest["price"]
+    for product in products[1:]:
+        if product["price"] < lowest_price:
+            lowest_price = product["price"]
+            lowest_products = [product]
+        elif product["price"] == lowest_price:
+            lowest_products.append(product)
+    return lowest_products
+
+
+def highest_price():
+    highest = products[0]
+    highest_products = [products[0]]
+    highest_price = highest["price"]
+    for product in products[1:]:
+        if product["price"] > highest_price:
+            highest_price = product["price"]
+            highest_products = [product]
+        elif product["price"] == highest_price:
+            highest_products.append(product)
+    return highest_products
 
 
 
@@ -62,7 +79,8 @@ def menu():
     print("2. Přidání položky")
     print("3. Vyhledat produkt(y)")
     print("4. Cena všech produktů")
-    print("5. Nejlevnější produkt\n")
+    print("5. Nejlevnější produkt(y)")
+    print("6. Nejdražší produkt(y)\n")
 
     choice = int(input("Volba: "))
 
@@ -91,9 +109,21 @@ def menu():
         print("")
         menu()
 
+
     elif choice == 5:
-        print("Nejlevnější produkt je:")
-        print(lowest_price())
+        print("Nejlevnější produkt(y):")
+        lowest_products = lowest_price()
+        for product in lowest_products:
+            print(f"Název: {product['name']}, Cena: {product['price']}$")
+        print("")
+        menu()
+
+
+    elif choice == 6:
+        print("Nejdražší produkt(y):")
+        highest_products = highest_price()
+        for product in highest_products:
+            print(f"Název: {product['name']}, Cena: {product['price']}$")
         print("")
         menu()
 
