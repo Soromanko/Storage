@@ -77,6 +77,15 @@ def average_price():
     return averagePrice
 
 
+def edit_product():
+    print(print_products())
+    edit = int(input("Vyber pořadí produktu k úpravě: ")) - 1
+    products[edit]["name"] = input("Nový název: ")
+    products[edit]["price"] = int(input("Nová cena: "))
+
+
+
+
 
 def menu():
     print("Vítej ve skladu")
@@ -87,7 +96,8 @@ def menu():
     print("4. Cena všech produktů")
     print("5. Nejlevnější produkt(y)")
     print("6. Nejdražší produkt(y)")
-    print("7. Průměrná cena\n")
+    print("7. Průměrná cena")
+    print("8. Upravit produkt\n")
 
     choice = int(input("Volba: "))
 
@@ -134,9 +144,17 @@ def menu():
         print("")
         menu()
 
+
     elif choice == 7:
         print("Průměrná cena:")
         print(average_price())
+        print("")
+        menu()
+
+
+    elif choice == 8:
+        print("Produkty pro úpravu:")
+        edit_product()
         print("")
         menu()
 
