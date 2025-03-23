@@ -78,7 +78,7 @@ def average_price():
 
 
 def edit_product():
-    print(print_products())
+    print_products()
     edit = int(input("Vyber pořadí produktu k úpravě: ")) - 1
     products[edit]["name"] = input("Nový název: ")
     products[edit]["price"] = int(input("Nová cena: "))
