@@ -71,6 +71,12 @@ def highest_price():
     return highest_products
 
 
+def average_price():
+    allProducts = sum(product['price'] for product in products)
+    averagePrice = allProducts/len(products)
+    return averagePrice
+
+
 
 def menu():
     print("Vítej ve skladu")
@@ -80,7 +86,8 @@ def menu():
     print("3. Vyhledat produkt(y)")
     print("4. Cena všech produktů")
     print("5. Nejlevnější produkt(y)")
-    print("6. Nejdražší produkt(y)\n")
+    print("6. Nejdražší produkt(y)")
+    print("7. Průměrná cena\n")
 
     choice = int(input("Volba: "))
 
@@ -124,6 +131,12 @@ def menu():
         highest_products = highest_price()
         for product in highest_products:
             print(f"Název: {product['name']}, Cena: {product['price']}$")
+        print("")
+        menu()
+
+    elif choice == 7:
+        print("Průměrná cena:")
+        print(average_price())
         print("")
         menu()
 
