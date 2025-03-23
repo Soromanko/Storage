@@ -84,6 +84,17 @@ def edit_product():
     products[edit]["price"] = int(input("Nová cena: "))
 
 
+def lowest_first():
+    for i in range(len(products) - 1, 0, -1):
+        for j in range(i):
+            if products[j]["price"] > products[j + 1]["price"]:
+                temp = products[j]
+                products[j] = products[j + 1]
+                products[j + 1] = temp
+    print_products()
+
+
+
 
 
 
@@ -97,7 +108,8 @@ def menu():
     print("5. Nejlevnější produkt(y)")
     print("6. Nejdražší produkt(y)")
     print("7. Průměrná cena")
-    print("8. Upravit produkt\n")
+    print("8. Upravit produkt")
+    print("9. Seřadit od nejlevnějšího\n")
 
     choice = int(input("Volba: "))
 
@@ -155,6 +167,13 @@ def menu():
     elif choice == 8:
         print("Produkty pro úpravu:")
         edit_product()
+        print("")
+        menu()
+
+
+    elif choice == 9:
+        print("Seřadit od nejlevnějšího:")
+        lowest_first()
         print("")
         menu()
 
