@@ -104,7 +104,6 @@ def highest_first():
     print_products()
 
 
-
 def menu():
     print("Vítej ve skladu")
     print("###############\n")
